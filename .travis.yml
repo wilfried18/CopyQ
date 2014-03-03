@@ -1,17 +1,13 @@
-language: cpp
+language:
+  - objective-c
+  - cpp
 compiler:
-  - gcc
   - clang
 
 install:
-  - sudo apt-get update
-  - sudo apt-get install libqt4-dev libxtst-dev openbox
-
-before_install:
-  - sudo pip install cpp-coveralls --use-mirrors
+  - brew update
+  - brew install qt5
 
 script:
-  - utils/build.sh
-
-after_success:
-  - utils/after_build.sh
+  - /usr/local/opt/qt5/bin/qmake CONFIG+=release
+  - make copyq.app
